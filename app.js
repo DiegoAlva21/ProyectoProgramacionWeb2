@@ -1,6 +1,6 @@
 let csvData = [];
 
-        // Function to read CSV file
+        // Funcion para leer csv
         document.getElementById('csvFileInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             const reader = new FileReader();
@@ -12,12 +12,12 @@ let csvData = [];
             reader.readAsText(file);
         });
 
-        // Function to parse CSV text into an array
+        
         function parseCSV(text) {
             csvData = text.trim().split('\n').map(row => row.split(','));
         }
 
-        // Function to display CSV data in a table
+        // Funcion para mostrar el csv en una tabla
         function mostrarCSV() {
             const table = document.getElementById('csvTable');
             table.innerHTML = '';
@@ -32,7 +32,7 @@ let csvData = [];
             });
         }
 
-        // Function to insert a new row into the CSV data
+        // Funcion para agregar datos
         function agregarData() {
             const newData = document.getElementById('newData').value;
             const newRow = newData.split(',');
@@ -40,7 +40,7 @@ let csvData = [];
             mostrarCSV();
         }
 
-        // Function to delete a row from the CSV data
+        // Funcion para eliminar datos
         function borrarData() {
             const rowIndex = parseInt(document.getElementById('rowIndex').value, 10);
             if (!isNaN(rowIndex) && rowIndex >= 0 && rowIndex < csvData.length) {
@@ -51,7 +51,7 @@ let csvData = [];
             }
         }
 
-        // Function to download the modified CSV file
+        // Funcion para descargar el csv editado
         function descargarCSV() {
             const csvContent = csvData.map(row => row.join(',')).join('\n');
             const blob = new Blob([csvContent], { type: 'text/csv' });
